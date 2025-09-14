@@ -54,8 +54,8 @@ Smart Tools is a Flask-based multi-utility web application that combines a wide 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/smart-tools.git
-   cd smart-tools
+   git clone https://github.com/BharathKumar113/Smart-Tools.git
+   cd Smart-Tools
    ```
 
 2. Install dependencies:
@@ -86,9 +86,8 @@ smart-tools/
 │── operation.py         # Helper functions for PDF & image processing
 │── requirements.txt     # Dependencies
 │── templates/           # HTML templates
-│── uploads/             # Temporary upload folder
-│── reels/               # Instagram reel storage
-│── static/              # Static files (CSS, JS, images)
+│── uploads/             # Instagram reel storage
+
 ```
 
 ---
