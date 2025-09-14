@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Difference Calculator</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px 30px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .date-input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .date-input-container input {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .date-input-container input:focus {
+            border-color: #4facfe;
+            outline: none;
+            box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+        }
+
+        button {
+            background: #4facfe;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #3b8edc;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #4facfe;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Date Difference Calculator</h1>
+        <form id="dateForm" method="POST" action="/date_diff">
+            <div class="date-input-container">
+                <label for="start_date">Start Date:</label>
+                <input type="text" id="start_date" name="start_date" placeholder="YYYY/MM/DD" required>
+                <div class="error" id="startDateError"></div>
+            </div>
+            
+            <div class="date-input-container">
+                <label for="end_date">End Date:</label>
+                <input type="text" id="end_date" name="end_date" placeholder="YYYY/MM/DD" required>
+                <div class="error" id="endDateError"></div>
+            </div>
+
+            <button type="submit">Calculate Difference</button>
+        </form>
+        <div class="footer">
+            <p>Powered by <a href="#">MBK</a></p>
+        </div>
+    </div>
+
+  <script>
+    // Form Validation Script
+    document.getElementById("dateForm").addEventListener("submit", function(event) {
+        let isValid = true;
+
+        // Validate Start Date
+        const startDate = document.getElementById("start_date").value;
+        const startDateError = document.getElementById("startDateError");
+        if (!isValidDate(startDate)) {
+            isValid = false;
+            startDateError.textContent = "Please enter a valid date in YYYY/MM/DD format.";
+        } else {
+            startDateError.textContent = "";
+        }
+
+        // Validate End Date
+        const endDate = document.getElementById("end_date").value;
+        const endDateError = document.getElementById("endDateError");
+        if (!isValidDate(endDate)) {
+            isValid = false;
+            endDateError.textContent = "Please enter a valid date in YYYY/MM/DD format.";
+        } else {
+            endDateError.textContent = "";
+        }
+
+        // Prevent form submission if validation fails
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+
+    // Function to validate date in YYYY/MM/DD format
+    function isValidDate(dateString) {
+        const regex = /^\d{4}\/\d{2}\/\d{2}$/;
+        if (!regex.test(dateString)) {
+            return false;
+        }
+        const parts = dateString.split('/');
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; // Months are 0-based in JavaScript Date
+        const day = parseInt(parts[2], 10);
+        const date = new Date(year, month, day);
+
+        return (
+            date.getFullYear() === year &&
+            date.getMonth() === month &&
+            date.getDate() === day
+        );
+    }
+</script>
+
+</body>
+</html>

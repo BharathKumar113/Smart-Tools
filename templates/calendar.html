@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Date Selector</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body and Container */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(120deg, #89f7fe, #66a6ff);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #66a6ff;
+    }
+
+    header p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Form Styling */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    input, select, button {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+    }
+
+    input, select {
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+    }
+
+    button {
+      background: #66a6ff;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    button:hover {
+      background: #89f7fe;
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      form button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Dynamic Date Selector</h1>
+      <p>Enter the year and optionally the month:</p>
+    </header>
+    <main>
+      <!-- Form submits data to Flask backend -->
+      <form action="/submit_date" method="POST" id="dateForm">
+        <label for="year">Year</label>
+        <input type="number" id="year" name="year" placeholder="Enter year (e.g., 2024)" required>
+        <label for="month">Month (Optional)</label>
+        <select id="month" name="month">
+          <option value="0" selected>None</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2024 Dynamic Web Solutions. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

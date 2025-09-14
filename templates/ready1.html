@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Ready for Download</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            color: #333;
+            overflow: hidden;
+        }
+
+        /* Container */
+        .container {
+            text-align: center;
+            padding: 50px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Background Shapes */
+        .container::before,
+        .container::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .container::before {
+            width: 150px;
+            height: 150px;
+            background: #f0f0f0;
+            top: -50px;
+            right: -50px;
+            animation: moveCircle 6s linear infinite;
+        }
+
+        .container::after {
+            width: 200px;
+            height: 200px;
+            background: #e6e6e6;
+            bottom: -60px;
+            left: -60px;
+            animation: moveCircle 8s linear infinite reverse;
+        }
+
+        /* Title */
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        /* Button Styles */
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+            background: #007bff;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Hover and Focus States */
+        .download-btn:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 10px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Moving Circles Animation */
+        @keyframes moveCircle {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(20px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Your PDF File Is Ready to Download</h1>
+        <a href="{{ url_for('image_finale') }}" class="download-btn">Download Now</a>
+    </div>
+</body>
+</html>

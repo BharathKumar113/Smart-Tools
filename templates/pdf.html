@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split PDF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Container Styling */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+            text-align: center;
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Input and Button Styling */
+        input[type="file"], input[type="number"], button {
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            cursor: pointer;
+            background: #f7f7f7;
+        }
+
+        input[type="file"]:hover {
+            background: #e8e8e8;
+        }
+
+        input[type="number"] {
+            background: #f7f7f7;
+        }
+
+        input[type="number"]:focus {
+            background: #e8e8e8;
+            box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.3);
+        }
+
+        /* Button Styling */
+        button {
+            background: linear-gradient(135deg, #42e695, #3bb2b8);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #3bb2b8, #42e695);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            input[type="file"], input[type="number"], button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Page Title -->
+        <h1>Split PDF File</h1>
+
+        <!-- Form for PDF Upload and Page Range -->
+        <form action="{{ url_for('process_pdf') }}" method="post" enctype="multipart/form-data">
+            <!-- PDF File Input -->
+            <input type="file" name="pdf_file" accept="application/pdf" required>
+
+            <!-- Start Page Number Input -->
+            <input type="number" name="start_page" placeholder="Start Page Number" min="1" required>
+
+            <!-- End Page Number Input -->
+            <input type="number" name="end_page" placeholder="End Page Number" min="1" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Compressor</title>
+
+    <!-- Link to Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0g94q2v9RfG0Dg0LP1f3HuvIuR6z6jQ1FQ4p1pJzWsd05D3z" crossorigin="anonymous">
+
+    <!-- Custom CSS for additional styling -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control-file {
+            border: 2px solid #007bff;
+            padding: 10px;
+        }
+        .btn-submit {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Image Compressor Online</h1>
+        <p>Compress your images easily with our online tool</p>
+    </div>
+
+    <div class="form-container">
+        <h2>Select the Image to Compress</h2>
+        <form action="/compressing" method="post" enctype="multipart/form-data">
+            <!-- Image upload input -->
+            <div class="form-group">
+                <input type="file" class="form-control-file" name="image" required />
+            </div>
+
+            <!-- Input for desired image size in KB -->
+            <div class="form-group">
+                <label for="size">Enter the desired size of the image in KB:</label>
+                <input type="number" class="form-control" name="size" id="size" placeholder="Enter size in KB" required />
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn-submit">Compress Image</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer section -->
+<footer>
+    <p>&copy; 2024 Image Compressor | All rights reserved</p>
+</footer>
+
+<!-- Link to Bootstrap JS and dependencies (for responsive behavior) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zya/sJ+E6nE0r4eq2O2n6Z8yJv5N5//v5V6PZ2V6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0g94q2v9RfG0Dg0LP1f3HuvIuR6z6jQ1FQ4p1pJzWsd05D3z" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0g94q2v9RfG0Dg0LP1f3HuvIuR6z6jQ1FQ4p1pJzWsd05D3z" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+instance/
+.env
+uploads/
+reels/
+*.mp3
+*.mp4
+*.png
+*.pdf
+users.csv

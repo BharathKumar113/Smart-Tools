@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Yearly Calendar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6); /* Gradient background */
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* Header Styling */
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Calendar Container */
+    .calendar {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Month Styling */
+    .month {
+      margin-bottom: 20px;
+    }
+
+    .month h2 {
+      font-size: 1.5rem;
+      color: #4CAF50;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    td:hover {
+      background: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Responsive Calendar */
+    @media (max-width: 600px) {
+      table {
+        font-size: 0.8rem;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
+
+    footer p a {
+      color: #ffd700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer p a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Welcome to the Yearly Calendar</h1>
+  </header>
+
+  <!-- Calendar Section -->
+  <div class="calendar">
+    {% if yearly_cal %}
+    {% for month, cal in yearly_cal.items() %}
+        <div>
+            <h2>{{ month }}</h2>
+            {{ cal|safe }}
+        </div>
+    {% endfor %}
+{% else %}
+  {{ cal|safe }}
+{% endif %}
+
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Your Name or Company. All rights reserved. | <a href="#">Contact Us</a></p>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <script>
+    // Example JavaScript: Add hover animations for cells
+    document.querySelectorAll('td').forEach(cell => {
+      cell.addEventListener('click', () => {
+        alert(`You selected ${cell.innerText}`);
+      });
+    });
+  </script>
+</body>
+</html>

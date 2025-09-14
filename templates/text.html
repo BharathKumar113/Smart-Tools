@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Upload</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #1E1E2F; /* Dark background */
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container Styling */
+    .container {
+      text-align: center;
+      padding: 2.5rem;
+      background: linear-gradient(145deg, #2a2a3d, #1a1a28); /* Modern gradient background */
+      border-radius: 15px;
+      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.7), -4px -4px 12px rgba(255, 255, 255, 0.05);
+      max-width: 450px;
+      width: 90%;
+      transition: all 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.05);
+    }
+
+    /* Title Styling */
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #f5f5f5;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateY(-20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* File Upload Styling */
+    .file-upload {
+      position: relative;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .upload-label {
+      display: block;
+      background: linear-gradient(145deg, #34344b, #2e2e40);
+      color: #00e6e6;
+      padding: 1.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #00e6e6;
+      text-align: center;
+    }
+
+    .upload-label:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 230, 230, 0.5);
+    }
+
+    .upload-label:active {
+      transform: scale(1.03);
+    }
+
+    /* Submit Button Styling */
+    .submit-btn {
+      background: #00e6e6;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #00e6e6;
+    }
+
+    .submit-btn:hover {
+      background: #1a75ff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(26, 117, 255, 0.5);
+    }
+
+    .submit-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(26, 117, 255, 0.3);
+    }
+
+    /* Animation for Container */
+    .container {
+      animation: popUp 0.5s ease-out;
+    }
+
+    @keyframes popUp {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Tooltip Styling */
+    .tooltip {
+      font-size: 0.85rem;
+      color: #b0b0b0;
+      margin-top: 0.5rem;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .submit-btn {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Upload Your PDF</h1>
+    <form action="/pdftext" method="POST" enctype="multipart/form-data">
+      <div class="file-upload">
+        <input type="file" id="pdfInput" name="pdf" accept="application/pdf" required>
+        <label for="pdfInput" class="upload-label">Choose a PDF</label>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+      <p class="tooltip">Accepted file format: PDF only</p>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Flask
+requests
+python-dateutil
+PyPDF2
+instaloader
+gTTS
+qrcode
+googletrans==4.0.0-rc1
+pillow

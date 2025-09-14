@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: cyan;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Top Right Links */
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown button {
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #4b4f7c;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: none;
+            border: 1px solid #4b4f7c;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown button:hover {
+            background: #ff5e57;
+            color: #fff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ff5e57;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 1.6rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
+            color: #4b4f7c;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p span {
+            color: #ff5e57;
+            font-family: 'Sacramento', cursive;
+        }
+
+        /* Container Styling */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffec61, #ff8c68);
+        }
+
+        .tool img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .tool span {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Footer Section */
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #ddd;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #2a3d66, #5c3b6f);
+            border-radius: 15px;
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Right Links -->
+    <div class="top-right">
+        <div class="dropdown">
+            <button>Sign Up / Login</button>
+            <div class="dropdown-content">
+                <a href="/signup">Sign Up</a>
+                <a href="/login">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+        <p>All-in-One Toolkit to <span>Simplify</span> Your Work</p>
+    </div>
+
+    <!-- Tool Container -->
+    <div class="container">
+        <a href="{{ url_for('insta') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/instagram-new--v1.png" alt="Instagram">
+            <span>Instagram Video Downloader</span>
+        </a>
+        <a href="{{ url_for('home') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/pdf-2--v1.png" alt="PDF">
+            <span>PDF File Protector</span>
+        </a>
+        <a href="{{ url_for('split_pdf') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/cut.png" alt="Split PDF">
+            <span>Split PDF</span>
+        </a>
+        <a href="{{ url_for('images_to_pdf') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/image.png" alt="Images">
+            <span>Images to PDF</span>
+        </a>
+        <a href="{{ url_for('pdf_to_text') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/document--v1.png" alt="PDF to Text">
+            <span>PDF to Text</span>
+        </a>
+        <a href="{{ url_for('text_to_speech') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/speaker.png" alt="Text to Speech">
+            <span>Text to Speech</span>
+        </a>
+        <a href="{{ url_for('text_to_qrcode') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/qr-code.png" alt="QR Code">
+            <span>QR Code Generator</span>
+        </a>
+        <a href="{{ url_for('date') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/calendar.png" alt="Date Difference">
+            <span>Difference Between Two Dates</span>
+        </a>
+        <a href="{{ url_for('view_calendar') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/calendar-1.png" alt="Calendar">
+            <span>Calendar</span>
+        </a>
+        <a href="{{ url_for('birthday_calculator') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/birthday-cake.png" alt="Birthday Calculator">
+            <span>Birthday Calculator</span>
+        </a>
+        <a href="{{ url_for('image_compress') }}" class="tool">
+            <img src="https://img.icons8.com/?size=96&id=13071&format=png" alt="Image Compressor">
+            <span>Image Compressor</span>
+        </a>
+        <!-- New Interest Calculator Tool -->
+        <a href="{{ url_for('interest_calculator') }}" class="tool">
+            <img src="https://img.icons8.com/color/60/000000/money.png" alt="Interest Calculator">
+            <span>Interest Calculator</span>
+        </a>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        &copy; 2025 MBK. All rights reserved. | <a href="#" onclick="terms()">Privacy Policy</a> | <a href="#"onclick="terms()">Terms of Service</a>
+        
+    </div>
+    <script>
+    function terms(){
+    alert("well i created this web page only for development purpose still it is under development");
+    }
+    </script>
+   
+<script>
+    window.onload = function() {
+        setTimeout(function() {
+            {% if not session.get('logged_in') %}
+            if (confirm("Do you want to login?")) {
+                window.location.href = "/login";
+            }
+            {% endif %}
+        }, 9000); 
+    };
+</script>
+
+
+        
+        
+</body>
+
+
+
+</html>

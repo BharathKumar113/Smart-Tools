@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Professional Voice Download</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Header Styles */
+        header {
+            background: #003366;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        .intro-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            background: #fff;
+            border-radius: 15px;
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .intro-section .content {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .intro-section .illustration img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Button Styles */
+        .download-buttons {
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            margin-right: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .btn-secondary {
+            background: #28a745;
+        }
+
+        .btn-secondary:hover {
+            background: #1e7e34;
+            transform: scale(1.1);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #003366;
+            color: #fff;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .intro-section {
+                flex-direction: column;
+            }
+
+            .intro-section .content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="title">Voice Download Portal</h1>
+            <p class="subtitle">Convert and download audio files in your preferred language!</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <div class="content">
+               
+                <div class="download-buttons">
+                    <a href="{{url_for('eng_download')}}" class="btn btn-primary">Download in English</a>
+                    </br></br>
+                    <a href="{{url_for('tel_download')}}" class="btn btn-secondary">Convert to Telugu & Download</a>
+                </div>
+            </div>
+            <div class="illustration">
+                
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Voice Portal | Designed with ❤️</p>
+    </footer>
+</body>
+</html>
